@@ -38,6 +38,8 @@ pushd $FW_TARGETDIR >/dev/null
         export BOARD="nucleo_f401re"
     elif [ "$PLATFORM" = "nucleo_h743zi" ]; then
         export BOARD="nucleo_h743zi"
+    elif [ "$PLATFORM" = "black_f407ve" ]; then
+        export BOARD="black_f407ve"
     elif [ "$PLATFORM" = "host" ]; then
         export BOARD="native_posix"
     else
