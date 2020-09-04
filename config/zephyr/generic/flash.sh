@@ -34,6 +34,14 @@ elif [ "$PLATFORM" = "olimex-stm32-e407" ]; then
 
     openocd -f $PROGRAMMER -f target/$TARGET -c init -c "reset halt" -c "flash write_image erase build/zephyr/zephyr.bin 0x08000000" -c "reset run; exit"
 
+  elif [ "$PLATFORM" = "black_f407ve" ]; then
+    if lsusb -d 0483:3748;then
+        PROGRAMMER=interface/stlink.cfg
+        TARGET=stm32f4x.cfg
+    fi
+
+    openocd -f $PROGRAMMER -f target/$TARGET -c init -c "reset halt" -c "flash write_image erase build/zephyr/zephyr.bin 0x08000000" -c "reset run; exit"
+
   else
     echo "build/zephyr/zephyr.bin not found: please compile before flashing."
   fi
